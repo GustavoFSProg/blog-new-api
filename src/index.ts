@@ -10,12 +10,9 @@ const app = express()
 const { PORT } = process.env
 
 app.use(express.json())
-
-
-// **** O codigo abiaxo setou o cors ****d
+app.use(cors())
 
 app.use(route)
-app.use(cors())
 
 
 app.get('/', function (req: Request, res: Response) {

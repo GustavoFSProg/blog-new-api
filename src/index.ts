@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import route from './routes'
+import route from './Routes/routes'
 
 dotenv.config()
 
@@ -20,7 +20,7 @@ app.get('/', function (req: Request, res: Response) {
 })
 
 app.listen(PORT, () => {
-  console.log(` 🍏 Api Running`)
+  console.log(` 🍏 Api Running ${PORT}`)
 })
 
 export default app

@@ -97,7 +97,7 @@ async function Login(req: Request, res: Response) {
 
     const token = await generateToken(user)
 
-    return res.status(201).json(token)
+    return res.status(201).json({token})
   } catch (error) {
     return res.status(400).json({ msg: 'ERROR!!!', error })
   }

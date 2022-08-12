@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { Request, Response } from 'express'
+import { verifyToken } from './Token'
+
 
 const { promisify } = require('util')
 import fs from 'fs'
@@ -12,7 +14,9 @@ dotenv.config()
 const prisma = new PrismaClient()
 
  var imagem = ''
-  var resultado = ''
+var resultado = ''
+  
+
 
 async function registerPost(req: Request, res: Response) {
  
@@ -28,6 +32,9 @@ async function registerPost(req: Request, res: Response) {
       console.log(resultado)
     })
   try {
+
+    
+
     const post = await prisma.posts.create({
       data: {
         title: req.body.title,
@@ -61,8 +68,13 @@ async function getAll(req: Request, res: Response) {
 }
 
 
+// eslint-disable-next-line import/prefer-default-export
+
+
+
 async function getSearch(req: Request, res: Response) {
   try {
+  
     const data = await prisma.posts.findFirst({
      where:{title: req.body.title},})
 

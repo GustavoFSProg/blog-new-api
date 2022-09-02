@@ -33,8 +33,6 @@ async function registerPost(req: Request, res: Response) {
     })
   try {
 
-    
-
     const post = await prisma.posts.create({
       data: {
         title: req.body.title,

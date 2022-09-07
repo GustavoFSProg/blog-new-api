@@ -66,7 +66,6 @@ async function getAll(req: Request, res: Response) {
 }
 
 
-// eslint-disable-next-line import/prefer-default-export
 
 
 

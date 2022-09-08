@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import cors from 'cors'
 
 import uploadConfig from '../uploadConfig'
 import multer from 'multer'
@@ -11,7 +12,7 @@ const PostsRoute = Router()
 
 PostsRoute.get('/all', postController.getAll),
 PostsRoute.get('/search', postController.getSearch)
-PostsRoute.post('/register', upload.single('image'), isAuthorized,   postController.registerPost)
+PostsRoute.post('/register', cors(), upload.single('image'), isAuthorized,   postController.registerPost)
 
 // upload.single('image'),
 

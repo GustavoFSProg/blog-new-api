@@ -2,6 +2,8 @@ import { Request, Response } from 'express'
 import { PrismaClient } from '@prisma/client'
 import md5 from 'md5'
 import jwt from 'jsonwebtoken'
+import { verifyToken } from './Token'
+
 
 const prisma = new PrismaClient()
 
@@ -103,4 +105,16 @@ async function Login(req: Request, res: Response) {
   }
 }
 
-export default { Login, deleteUser, createUser, update, getAll, getOne }
+async function Token(req: Request, res: Response, next: any) {
+  const token = req.body.token || req.headers['token'] 
+
+  if (!token) return res.status(401).send({ error: 'Not authorized' })
+
+  const { error, decode }: any = await verifyToken(token)
+
+  if (error) return res.status(401).send({ error: 'Invalid token' })
+  // req.body.currentUser = await getCurrentUser(decode.email)
+  return next()
+}
+
+export default {Token, Login, deleteUser, createUser, update, getAll, getOne }

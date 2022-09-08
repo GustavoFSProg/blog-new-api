@@ -10,8 +10,8 @@ import { isAuthorized } from '../authorize'
 const PostsRoute = Router()
 
 PostsRoute.get('/all', postController.getAll),
-PostsRoute.get('/search', postController.getSearch),
-PostsRoute.post('/register', upload.single('image'), isAuthorized,   postController.registerPost)
+PostsRoute.get('/search', postController.getSearch)
+// PostsRoute.post('/register', upload.single('image'), isAuthorized,   postController.registerPost)
 
 // upload.single('image'),
 

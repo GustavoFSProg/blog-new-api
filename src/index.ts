@@ -14,8 +14,8 @@ app.use(express.json())
 
 
 var corsOptions = {
-  // origin: 'https://blog-new.netlify.app/',
-  origin: 'http://sdfsf.netlify.app/',
+  origin: 'https://blog-new.netlify.app/',
+  // origin: 'http://sdfsf.netlify.app/',
   // methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   // preflightContinue: false,
   allowedHeaders: ['Content-Type', 'token'],

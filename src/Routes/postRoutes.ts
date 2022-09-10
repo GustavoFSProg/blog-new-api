@@ -11,17 +11,17 @@ import { isAuthorized } from '../authorize'
 const PostsRoute = Router()
 
 
-var corsOptions = {
-  // allowedHeaders: ['Content-Type', 'Authorization'], 
-  // allowedHeaders:['https://blog-new.netlify.app/'], 
+// var corsOptions = {
+//   // allowedHeaders: ['Content-Type', 'Authorization'], 
+//   // allowedHeaders:['https://blog-new.netlify.app/'], 
   
  
-  // origin: '  ',
+//   // origin: '  ',
  
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
-PostsRoute.get('/all', cors(corsOptions), postController.getAll),
+PostsRoute.get('/all',  postController.getAll),
 PostsRoute.get('/search', postController.getSearch)
 PostsRoute.post('/register', isAuthorized, upload.single('image'),    postController.registerPost)
 

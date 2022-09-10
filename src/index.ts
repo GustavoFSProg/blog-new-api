@@ -12,16 +12,12 @@ const { PORT } = process.env
 app.use(express.json())
 // app.use(cors())
 
-//  "origin": "*",
-//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   "preflightContinue": false,
-//   "optionsSuccessStatus": 204
 
 var corsOptions = {
   // origin: 'https://blog-new.netlify.app/',
   origin: 'http://sdfsf.netlify.app/',
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
+  // methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  // preflightContinue: false,
   allowedHeaders: ['Content-Type', 'token'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }

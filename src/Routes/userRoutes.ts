@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { isAuthorized } from '../authorize'
+import { isAuthorized } from '../utils/authorize'
 import cors from 'cors'
 
 const Postproducts = {
@@ -9,7 +9,7 @@ const Postproducts = {
   maxAge: 3600
 };
 
-import userController from '../userController'
+import userController from '../controllers/userController'
 
 const UsersRoute = Router()
 

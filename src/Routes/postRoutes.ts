@@ -5,8 +5,8 @@ import uploadConfig from '../uploadConfig'
 import multer from 'multer'
 const upload = multer(uploadConfig)
 
-import postController from '../postController'
-import { isAuthorized } from '../authorize'
+import postController from '../controllers/postController'
+import { isAuthorized } from '../utils/authorize'
 
 const PostsRoute = Router()
 

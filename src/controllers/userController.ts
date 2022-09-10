@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { PrismaClient } from '@prisma/client'
 import md5 from 'md5'
 import jwt from 'jsonwebtoken'
-import { verifyToken } from './Token'
+import { verifyToken } from '../utils/Token'
 
 
 const prisma = new PrismaClient()

@@ -18,9 +18,10 @@ const Postproducts = {
 }
 
 var corsOptions = {
-  origin: 'https://blog-new.netlify.app/',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  preflightContinue: false,
+  origin: ['https://blog-new.netlify.app/'],
+  // origin: ['http://localhost:5000/'],
+  // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  // preflightContinue: false,
   optionsSuccessStatus: 204,
 }
 
@@ -32,8 +33,10 @@ var corsOptions = {
 
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
+// cors(corsOptions), 
 
-PostsRoute.get('/all', cors(corsOptions), postController.getAll),
+// PostsRoute.get('/all', cors(corsOptions), postController.getAll),
+PostsRoute.get('/all',  postController.getAll),
   PostsRoute.get('/search', postController.getSearch)
 PostsRoute.post(
   '/register',

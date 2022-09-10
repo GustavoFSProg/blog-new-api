@@ -2,12 +2,12 @@ import { Router } from 'express'
 import { isAuthorized } from '../authorize'
 import cors from 'cors'
 
-// const Postproducts = {
-//   origin: true,
-//   methods: ["GET"],
-//   credentials: true,
-//   maxAge: 3600
-// };
+const Postproducts = {
+  origin: true,
+  methods: ["POST"],
+  credentials: true,
+  maxAge: 3600
+};
 
 import userController from '../userController'
 

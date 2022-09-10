@@ -13,7 +13,7 @@ const PostsRoute = Router()
 
 var corsOptions = {
   // allowedHeaders: ['Content-Type', 'Authorization'], 
-  allowedHeaders:['https://blog-new.netlify.app/'], 
+  // allowedHeaders:['https://blog-new.netlify.app/'], 
   
  
   // origin: '  ',

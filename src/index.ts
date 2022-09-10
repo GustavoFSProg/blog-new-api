@@ -12,10 +12,6 @@ const { PORT } = process.env
 app.use(express.json())
 app.use(cors())
 
-app.get('/', function (req, res, next) {
-  res.json({ msg: 'This is CORS-enabled for only example.com.' })
-})
-
 app.use(route)
 
 app.get('/', function (req: Request, res: Response) {

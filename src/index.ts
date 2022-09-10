@@ -9,6 +9,17 @@ const app = express()
 
 const { PORT } = process.env
   
+
+
+app.use(express.json())
+app.use(cors())
+// app.use(cors(
+//   "Access-Control-Allow-Headers": "Content-Type",
+//   "Access-Control-Allow-Origin": "https://www.example.com",
+//   "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+
+// ))
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
     res.header(
@@ -24,15 +35,6 @@ app.use((req, res, next) => {
     }
     next()
   })
-
-app.use(express.json())
-app.use(cors())
-// app.use(cors(
-//   "Access-Control-Allow-Headers": "Content-Type",
-//   "Access-Control-Allow-Origin": "https://www.example.com",
-//   "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-
-// ))
 
 app.use(route)
 

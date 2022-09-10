@@ -12,7 +12,8 @@ const PostsRoute = Router()
 
 
 var corsOptions = {
-  origin: 'https://blog-new.netlify.app/',
+  allowedHeaders: ['Content-Type', 'Authorization'],  
+  origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 

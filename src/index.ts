@@ -25,7 +25,7 @@ var corsOptions = {
 
 app.use(route)
 
-app.get('/', cors(corsOptions), function (req: Request, res: Response) {
+app.get('/all', cors(corsOptions), function (req: Request, res: Response) {
   return res.status(200).send({ msg: ` 🍏 Api Running` })
 })
 

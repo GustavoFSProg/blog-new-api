@@ -37,13 +37,16 @@ var corsOptions = {
 
 // PostsRoute.get('/all', cors(corsOptions), postController.getAll),
 PostsRoute.get('/all',  postController.getAll),
-  PostsRoute.get('/search', postController.getSearch)
+  PostsRoute.get('/search', postController.getSearch),
 PostsRoute.post(
   '/register',
   cors(Postproducts),
   isAuthorized,
   upload.single('image'),
   postController.registerPost
-)
+),
+
+PostsRoute.post('/likes/:id', postController.updateLikes)
+PostsRoute.post('/views/:id', postController.updateViews)
 
 export default PostsRoute

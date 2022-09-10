@@ -8,14 +8,22 @@ dotenv.config()
 const app = express()
 
 const { PORT } = process.env
-
-app.all('*', function(req, res, next) {
-     var origin = req.get('origin'); 
-     res.header('Access-Control-Allow-Origin', origin);
-     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-     res.header('Access-Control-Allow-Headers', 'Content-Type');
-     next();
-});
+  
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+      res.header(
+        "Access-Control-Allow-Methods",
+        "POST, PUT, PATCH, GET, DELETE"
+      )
+      return res.status(200).json({})
+    }
+    next()
+  })
 
 app.use(express.json())
 app.use(cors())

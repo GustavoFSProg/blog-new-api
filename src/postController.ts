@@ -1,9 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { Request, Response } from 'express'
-import { verifyToken } from './Token'
 
-const { promisify } = require('util')
-import fs from 'fs'
 var cloudinary = require('cloudinary')
 
 import dotenv from 'dotenv'
@@ -22,7 +19,7 @@ async function registerPost(req: Request, res: Response) {
     api_secret: process.env.CLOUDINARY_API_SECRET,
   })
 
-  cloudinary.uploader.upload(req.file.path, function (result, error: any) {
+  cloudinary.uploader.upload(req.file?.path, function (result, error: any) {
     imagem = result.secure_url
     resultado = result
     console.log(resultado)

@@ -25,7 +25,7 @@ var corsOptions = {
   allowedHeaders: ['Content-Type', 'token'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-cors(corsOptions),
+app.use(cors(corsOptions)),
 
 app.get('/',  function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for only example.com.'})

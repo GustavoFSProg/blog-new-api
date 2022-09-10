@@ -10,13 +10,13 @@ import { isAuthorized } from '../authorize'
         
 const PostsRoute = Router()
 
-
 const Postproducts = {
   origin: true,
   methods: ["POST"],
   credentials: true,
   maxAge: 3600
 };
+
 // var corsOptions = {
 //   // allowedHeaders: ['Content-Type', 'Authorization'], 
 //   // allowedHeaders:['https://blog-new.netlify.app/'], 

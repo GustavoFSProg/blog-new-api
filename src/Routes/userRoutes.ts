@@ -15,6 +15,6 @@ const UsersRoute = Router()
 UsersRoute.get('/all-user', isAuthorized, userController.getAll),
   // UsersRoute.post('/verify-token', userController.Token)
   UsersRoute.post('/register-user', userController.createUser)
-UsersRoute.post('/login', cors(),  userController.Login)
+UsersRoute.post('/login',  userController.Login)
 
 export default UsersRoute

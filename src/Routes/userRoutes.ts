@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { isAuthorized } from '../authorize'
-// import cors from 'cors'
+import cors from 'cors'
 
 // var corsOptions = {
 //   origin: 'https://blog-new.netlify.app/',
@@ -15,6 +15,6 @@ const UsersRoute = Router()
 UsersRoute.get('/all-user', isAuthorized, userController.getAll),
   // UsersRoute.post('/verify-token', userController.Token)
   UsersRoute.post('/register-user', userController.createUser)
-UsersRoute.post('/login',  userController.Login)
+UsersRoute.post('/login', cors(),  userController.Login)
 
 export default UsersRoute

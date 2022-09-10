@@ -29,7 +29,7 @@ const Postproducts = {
 
 PostsRoute.get('/all',   postController.getAll),
 PostsRoute.get('/search', postController.getSearch)
-PostsRoute.post('/register', isAuthorized,  cors(Postproducts), upload.single('image'),    postController.registerPost)
+PostsRoute.post('/register',  cors(Postproducts), isAuthorized,  upload.single('image'),    postController.registerPost)
 
  
 

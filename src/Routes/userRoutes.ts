@@ -1,6 +1,8 @@
 import { Router } from 'express'
 import { isAuthorized } from '../utils/authorize'
 import cors from 'cors'
+import express, { Request, Response } from 'express'
+const app = express()
 
 const Postproducts = {
   origin: true,

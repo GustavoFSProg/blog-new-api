@@ -36,10 +36,7 @@ var corsOptions = {
 // cors(corsOptions), 
 
 // PostsRoute.get('/all', cors(corsOptions), postController.getAll),
-PostsRoute.get('/all',  cors({
-  origin: ['https://blog-new.netlify.app/'],
-  
-}),  postController.getAll),
+PostsRoute.get('/all', postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
 PostsRoute.post(
   '/register',

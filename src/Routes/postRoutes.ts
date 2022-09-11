@@ -10,22 +10,6 @@ import { isAuthorized } from '../utils/authorize'
 
 const PostsRoute = Router()
 
-const Postproducts = {
-  origin: true,
-  methods: ['POST'],
-  credentials: true,
-  maxAge: 3600,
-}
-
-var corsOptions = {
-  origin: ['https://blog-new.netlify.app/'],
-  // origin: ['http://lodescalhost:5173/'],
-  // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  // preflightContinue: false,
-  optionsSuccessStatus: 204,
-}
-
-// PostsRoute.get('/all', cors(corsOptions), postController.getAll),
 PostsRoute.get('/all',  postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
 PostsRoute.post(

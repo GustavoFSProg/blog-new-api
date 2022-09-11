@@ -10,7 +10,36 @@ import { isAuthorized } from '../utils/authorize'
 
 const PostsRoute = Router()
 
-PostsRoute.get('/all',  postController.getAll),
+const Postproducts = {
+  origin: true,
+  methods: ['POST'],
+  credentials: true,
+  maxAge: 3600,
+}
+
+var corsOptions = {
+  origin: ['https://blog-new.netlify.app/'],
+  // origin: ['http://lodescalhost:5173/'],
+  // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  // preflightContinue: false,
+  optionsSuccessStatus: 204,
+}
+
+// var corsOptions = {
+//   // allowedHeaders: ['Content-Type', 'Authorization'],
+//   // allowedHeaders:['https://blog-new.netlify.app/'],
+
+//   // origin: '  ',
+
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
+// cors(corsOptions), 
+
+// PostsRoute.get('/all', cors(corsOptions), postController.getAll),
+PostsRoute.get('/all',  cors({
+  origin: ['https://blog-new.netlify.app/'],
+  
+}),  postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
 PostsRoute.post(
   '/register',

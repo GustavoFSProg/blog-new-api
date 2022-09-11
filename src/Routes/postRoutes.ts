@@ -25,7 +25,6 @@ var corsOptions = {
   optionsSuccessStatus: 204,
 }
 
-app.use(cors())
 // PostsRoute.get('/all', cors(corsOptions), postController.getAll),
 PostsRoute.get('/all',  postController.getAll),
   PostsRoute.get('/search', postController.getSearch),

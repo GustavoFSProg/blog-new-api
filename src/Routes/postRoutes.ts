@@ -49,7 +49,10 @@ PostsRoute.post(
   postController.registerPost
 ),
 
-PostsRoute.post('/likes/:id', postController.updateLikes)
+PostsRoute.put('/likes/:id', postController.updateLikes)
 PostsRoute.post('/views/:id', postController.updateViews)
+PostsRoute.get('/get-likes/:id', postController.viewLikes)
+
+
 
 export default PostsRoute

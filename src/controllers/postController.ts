@@ -57,6 +57,18 @@ async function getAll(req: Request, res: Response) {
   }
 }
 
+async function getOnePost(req: Request, res: Response) {
+  try {
+    const data = await prisma.posts.findFirst({
+      where: { id: req.params.id },
+    })
+
+    return res.status(200).send(data)
+  } catch (error) {
+    return res.status(400).send({ msg: 'ERROR!!', error })
+  }
+}
+
 async function updateLikes(req: Request, res: Response) {
   try {
     const data = await prisma.posts.findFirst({
@@ -80,23 +92,19 @@ async function updateLikes(req: Request, res: Response) {
   }
 }
 
-
 async function viewLikes(req: Request, res: Response) {
   try {
-    const {likes} = await prisma.posts.findFirst({
+    const { likes } = await prisma.posts.findFirst({
       where: { id: req.params.id },
     })
 
     if (!likes) return res.status(200).send({ msg: 'Post not found!' })
 
-
-    return res.status(200).send( likes)
+    return res.status(200).send(likes)
   } catch (error) {
     return res.status(400).send({ msg: 'ERROR!!', error })
   }
 }
-
-
 
 async function updateViews(req: Request, res: Response) {
   try {
@@ -132,4 +140,4 @@ async function getSearch(req: Request, res: Response) {
     return res.status(400).send({ msg: 'ERROR!!', error })
   }
 }
-export default {updateLikes, viewLikes, updateViews, registerPost, getAll, getSearch }
+export default { updateLikes, getOnePost, viewLikes, updateViews, registerPost, getAll, getSearch }

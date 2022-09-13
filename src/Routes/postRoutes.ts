@@ -52,6 +52,7 @@ PostsRoute.post(
 PostsRoute.put('/likes/:id', postController.updateLikes)
 PostsRoute.post('/views/:id', postController.updateViews)
 PostsRoute.get('/get-likes/:id', postController.viewLikes)
+PostsRoute.get('/get-one-post/:id', postController.getOnePost)
 
 
 

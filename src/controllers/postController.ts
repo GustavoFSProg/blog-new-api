@@ -41,6 +41,38 @@ async function registerPost(req: Request, res: Response) {
   }
 }
 
+//  todo
+
+async function updatePost(req: Request, res: Response) {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  })
+
+  cloudinary.uploader.upload(req.file?.path, function (result, error: any) {
+    imagem = result.secure_url
+    resultado = result
+    console.log(resultado)
+  })
+  try {
+    const post = await prisma.posts.update({
+      where:{id: req.params.id},
+      data: {
+        title: req.body.title,
+        image: imagem,
+        autor: req.body.autor,
+        text: req.body.text,
+        description: req.body.description,
+      },
+    })
+
+    return res.status(201).send({ post })
+  } catch (error) {
+    return res.status(400).send({ msg: 'ERROR!!', error })
+  }
+}
+
 async function getAll(req: Request, res: Response) {
   try {
     const data = await prisma.posts.findMany({
@@ -58,6 +90,16 @@ async function getAll(req: Request, res: Response) {
   }
 }
 
+
+async function getTotal(req: Request, res: Response) {
+  try {
+    const data = await prisma.posts.findMany()
+
+    return res.status(200).send(data)
+  } catch (error) {
+    return res.status(400).send({ msg: 'ERROR!!', error })
+  }
+}
 async function getOnePost(req: Request, res: Response) {
   try {
     const data = await prisma.posts.findFirst({
@@ -141,4 +183,18 @@ async function getSearch(req: Request, res: Response) {
     return res.status(400).send({ msg: 'ERROR!!', error })
   }
 }
-export default { updateLikes, getOnePost, viewLikes, updateViews, registerPost, getAll, getSearch }
+
+async function deletePost(req: Request, res: Response) {
+  try {
+    const data = await prisma.posts.delete({
+      where: { id: req.params.id },
+    })
+
+    return res.status(200).send(data)
+  } catch (error) {
+    return res.status(400).send({ msg: 'ERROR!!', error })
+  }
+}
+
+
+export default { getTotal, deletePost, updateLikes, updatePost, getOnePost, viewLikes, updateViews, registerPost, getAll, getSearch }

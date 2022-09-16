@@ -37,6 +37,7 @@ var corsOptions = {
 
 // PostsRoute.get('/all', cors(corsOptions), postController.getAll),
 PostsRoute.get('/all', postController.getAll),
+PostsRoute.get('/total', postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
 PostsRoute.post(
   '/register',
@@ -53,6 +54,9 @@ PostsRoute.put('/likes/:id', postController.updateLikes)
 PostsRoute.post('/views/:id', postController.updateViews)
 PostsRoute.get('/get-likes/:id', postController.viewLikes)
 PostsRoute.get('/profile/:id', postController.getOnePost)
+PostsRoute.put('/update/:id', postController.updatePost)
+PostsRoute.put('/delete/:id', postController.deletePost)
+PostsRoute.get('/total', postController.getTotal)
 
 
 

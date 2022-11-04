@@ -16,7 +16,7 @@ app.use(
     res.header("Access-Control-Allow-Origin", "*")
     //Quais são os métodos que a conexão pode realizar na API
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE')
-    res.header("Access-Control-Allow-Headers") 
+    res.header("Access-Control-Allow-Headers", "*") 
     app.use(cors())
     next()
   })

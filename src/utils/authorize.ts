@@ -1,15 +1,23 @@
-import { Request, Response } from 'express'
-import { verifyToken } from './Token'
+import { Request, Response } from "express"
+import { verifyToken } from "./Token"
 
-// eslint-disable-next-line import/prefer-default-export
-export async function isAuthorized(req: Request, res: Response, next: any) {
-  const token = req.body.token || req.headers['token'] 
+export async function isAuthorized(req: Request, res: Response, next: () => any) {
+  try {
+ 
+    const token = req.body.token || req.params.token || req.headers['token']
 
-  if (!token) return res.status(401).send({ error: 'Not authorized' })
-  const { error, decode }: any = await verifyToken(token)
+    if (!token) return res.status(401).send({ error: 'Not authorized' })
+
+    console.log(token)
   
+    const { decode, error }: any = await verifyToken(token)
 
-  if (error) return res.status(401).send({ error: 'Invalid token' })
-  // req.body.currentUser = await getCurrentUser(decode.email)
-  return next()
+    if (error && !decode) return res.status(200).send({ isValidToken: false, msg: "Token Invalido!" })
+
+    next()
+    return res.status(200).send({ isValidToken: true })
+  } catch (error) {
+    return res.status(400).send({ error })
+  }
+ 
 }

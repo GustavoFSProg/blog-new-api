@@ -1,18 +1,18 @@
 import { Router } from 'express'
-import cors from 'cors'
 
 import uploadConfig from '../uploadConfig'
 import multer from 'multer'
 const upload = multer(uploadConfig)
 
 import postController from '../controllers/postController'
+import { isAuthorized } from '../utils/authorize'
 
 const PostsRoute = Router()
 
-PostsRoute.get('/all', postController.getAll),
-PostsRoute.get('/total', postController.getAll),
+PostsRoute.get('/all',  postController.getAll),
+PostsRoute.get('/total',  postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
-PostsRoute.post('/register', upload.single('image'), postController.registerPost),
+PostsRoute.post('/register', isAuthorized, upload.single('image'), postController.registerPost),
 
 PostsRoute.put('/likes/:id', postController.updateLikes)
 PostsRoute.post('/views/:id', postController.updateViews)

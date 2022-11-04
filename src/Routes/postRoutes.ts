@@ -39,16 +39,7 @@ var corsOptions = {
 PostsRoute.get('/all', postController.getAll),
 PostsRoute.get('/total', postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
-PostsRoute.post(
-  '/register',
-  cors({
-  origin: ['https://blog-new.netlify.app/', 'http://localhost:5173/'],
-  
-}),
-  isAuthorized,
-  upload.single('image'),
-  postController.registerPost
-),
+PostsRoute.post('/register', isAuthorized, upload.single('image'), postController.registerPost),
 
 PostsRoute.put('/likes/:id', postController.updateLikes)
 PostsRoute.post('/views/:id', postController.updateViews)

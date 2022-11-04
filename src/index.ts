@@ -9,13 +9,14 @@ const app = express()
 
 const { PORT } = process.env
 
+
+app.use(cors())
 app.use(express.json())
 // app.use(cors({
 //   origin: ['https://blog-new.netlify.app/', 'http://localhost:5173/', 'http://localhost:5173/login' ],
   
 // }))
 
-app.use(cors())
 app.use(route)
 
 app.get('/', function (req: Request, res: Response) {

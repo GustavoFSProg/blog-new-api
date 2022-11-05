@@ -9,10 +9,10 @@ import { isAuthorized } from '../utils/authorize'
 
 const PostsRoute = Router()
 
-PostsRoute.get('/all',  postController.getAll),
+PostsRoute.get('/all', isAuthorized,   postController.getAll),
 PostsRoute.get('/total',  postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
-PostsRoute.post('/register', isAuthorized, upload.single('image'), postController.registerPost),
+PostsRoute.post('/register', upload.single('image'),  postController.registerPost),
 
 PostsRoute.put('/likes/:id', postController.updateLikes)
 PostsRoute.post('/views/:id', postController.updateViews)

@@ -1,8 +1,12 @@
 import { Request, Response } from "express"
+import app from ".."
 import { verifyToken } from "./Token"
+import cors from 'cors'
+ 
 
 export async function isAuthorized(req: Request, res: Response, next: () => any) {
   try {
+        app.use(cors())
  
     const token = req.body.token || req.params.token || req.headers['token']
 

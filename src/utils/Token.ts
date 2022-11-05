@@ -27,9 +27,9 @@ export async function generateToken(data: any) {
 //   return jwt.decode(token,  process.env.SECRET as string & { asBytes: true }))
 // }
 
-export function verifyToken(token: any) {
+export async function verifyToken(token: any) {
   return (
-  jwt.verify(token, process.env.SECRET as string & { asBytes: true }) as String,
+ await jwt.verify(token, process.env.SECRET as string & { asBytes: true }) as String,
     (error: any, decode: any) => {
       if (error) return { error } as any
       return { decode } as any

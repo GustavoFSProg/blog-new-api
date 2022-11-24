@@ -15,7 +15,7 @@ const PostsRoute = Router()
 //      res.send("Lista de Posts")
 // }
 
-PostsRoute.get('/all',  postController.getAll),
+PostsRoute.get('/all', isAuthorized, postController.getAll),
 PostsRoute.get('/total',  postController.getAll),
   PostsRoute.get('/search', postController.getSearch),
 PostsRoute.post('/register', upload.single('image'),  postController.registerPost),

@@ -9,7 +9,12 @@ const { PORT } = process.env
 
 const app = express()
 
-app.use(cors())
+const options: cors.CorsOptions = {
+  methods: 'GET,POST,PUT,DELETE',
+  origin: 'https://blog-new.netlify.app/'
+}
+
+app.use(cors(options))
 app.use(express.json())
 app.use(routes)
 

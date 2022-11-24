@@ -11,7 +11,7 @@ const app = express()
 
 const options: cors.CorsOptions = {
   methods: 'GET,POST,PUT,DELETE',
-  origin: 'https://blog-new.netlify.app'
+  origin: 'https://blog-new.netlify.app/'
 }
 
 app.use(cors(options))
